@@ -47,7 +47,7 @@ Notes:
 - CSV can be generated in Kibana
 - Ignored Arrival types because then unique key would need to be trainNumber_scheduledTime_type
 - Data quality of the API is good. Therefore, a method was created to corrupt data and enrich the quality report.
-- Credentials elastic cluster: user: elastic; pass: PTb7ERVCwBv51SCbKIlqZGV5
+- Credentials elastic cluster: cluster es: https://1df4f80960f74a8d8a7b9ff88b00ade4.eu-central-1.aws.cloud.es.io:443; kibana: https://my-deployment-7d0a00.kb.eu-central-1.aws.cloud.es.io/app/enterprise_search/overview; user: elastic; pass: PTb7ERVCwBv51SCbKIlqZGV5
 - Elastic index rail-errors, must guarantee scheduledTime has keyword as a mapping. Otherwise, it will be indexed as date from the first document received. When a Invalid Date is received a mapping error will be thrown by the connector. 
 PUT _index_template/rail-errors
 {
