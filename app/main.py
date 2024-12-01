@@ -1,4 +1,5 @@
 
+import os
 import uuid
 import socket
 from row_processor import RowProcessor
@@ -6,12 +7,14 @@ from record_processor import RecordProcessor
 from data_fetcher import DataFetcher
 from kafka_producer_client import KafkaProducerClient
 
-CONF = {'bootstrap.servers': 'pkc-7xoy1.eu-central-1.aws.confluent.cloud:9092',
-        'security.protocol': 'SASL_SSL',
-        'sasl.mechanism': 'PLAIN',
-        'sasl.username': '5QQUUN7SPZLDSXQO',
-        'sasl.password': 'hj4Cq0CEWY69HHuxwJA4oeB522B6wpdm6O5hizlXk7Ys/2EQDQ7ac0MdOcfrmTlx',
-        'client.id': socket.gethostname()}
+CONF = {
+    'bootstrap.servers': os.getenv('KAFKA_BOOTSTRAP_SERVERS', 'localhost:9092'),
+    'security.protocol': 'SASL_SSL',
+    'sasl.mechanism': 'PLAIN',
+    'sasl.username': os.getenv('KAFKA_SASL_USERNAME', 'default-username'),
+    'sasl.password': os.getenv('KAFKA_SASL_PASSWORD', 'default-password'),
+    'client.id': os.getenv('HOSTNAME', 'default-client')
+}
 
 # Define the Digitraffic API URL
 LIVE_API = 'https://rata.digitraffic.fi/api/v1/live-trains/'

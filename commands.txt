@@ -1,7 +1,8 @@
 cd /mnt/d/workspace/CodeRep/python-projects/rail_challenge
 
-docker build -t kafka-python-app .
+docker build -t train-data-processor .
 
-docker run --name kafka-python-app-container kafka-python-app
-
-docker run -v $(pwd)/live_trains.json:/app/live_trains.json kafka-python-app
+docker run -e KAFKA_BOOTSTRAP_SERVERS=pkc-7xoy1.eu-central-1.aws.confluent.cloud:9092 \
+           -e KAFKA_SASL_USERNAME=5QQUUN7SPZLDSXQO \
+           -e KAFKA_SASL_PASSWORD=hj4Cq0CEWY69HHuxwJA4oeB522B6wpdm6O5hizlXk7Ys/2EQDQ7ac0MdOcfrmTlx \
+           train-data-processor

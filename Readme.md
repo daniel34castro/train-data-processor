@@ -13,24 +13,17 @@ The final goal for this challenge was creating a quality report. The architectur
 Potencial improvements
 - Retry mechanism in case of failures in Kafka sending (e.g., network issues) 
 - Parallel Processing with threadpools or use libraries like Apache Flink or Kafka Streams, which are designed for high-throughput, low-latency processing of large datasets.
--   
+- Externalize configuration into a separate config file or enviroment variables
 
 
-Notes
-elastic
-PTb7ERVCwBv51SCbKIlqZGV5
-
-local file live_trains.json used to test
-
-Connector uses key for id in elastic
-
-CSV can be generated in Kibana
-
-Ignored Arrival types because then unique key would need to be trainNumber_scheduledTime_type
-
-Corrupt data
-
-Elastic rail errors, must guarantee scheduledTime has keyword as a mapping
+Notes: 
+- local file live_trains.json used to test
+- Connector uses key for id in elastic
+- CSV can be generated in Kibana
+- Ignored Arrival types because then unique key would need to be trainNumber_scheduledTime_type
+- Data quality of the API is good. Therefore, a method was created to corrupt data and enrich the quality report.
+- Credentials elastic cluster: user: elastic; pass: PTb7ERVCwBv51SCbKIlqZGV5
+- Elastic index rail-errors, must guarantee scheduledTime has keyword as a mapping. Otherwise, it will be indexed as date from the first document received. When a Invalid Date is received a mapping error will be thrown by the connector. 
 PUT _index_template/rail-errors
 {
   "index_patterns": [
