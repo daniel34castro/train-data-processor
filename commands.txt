@@ -1,0 +1,7 @@
+cd /mnt/d/workspace/CodeRep/python-projects/rail_challenge
+
+docker build -t kafka-python-app .
+
+docker run --name kafka-python-app-container kafka-python-app
+
+docker run -v $(pwd)/live_trains.json:/app/live_trains.json kafka-python-app
