@@ -64,14 +64,14 @@ class RecordProcessor:
 
             if corruption_type == 'remove_train_number':
                 if 'trainNumber' in corrupted_record:
-                    print("Corrupting record: Removing 'trainNumber'")
+                    # print("Corrupting record: Removing 'trainNumber'")
                     del corrupted_record['trainNumber']  # Remove trainNumber
 
             elif corruption_type == 'corrupt_scheduled_time':
                 if 'timeTableRows' in corrupted_record:
                     row_to_corrupt = random.choice(corrupted_record['timeTableRows'])
                     if 'scheduledTime' in row_to_corrupt:
-                        print("Corrupting record: Corrupting 'scheduledTime'")
+                        # print("Corrupting record: Corrupting 'scheduledTime'")
                         row_to_corrupt['scheduledTime'] = 'INVALID_DATE'  # Corrupt the scheduledTime
 
         return corrupted_record

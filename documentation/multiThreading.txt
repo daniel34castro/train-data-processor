@@ -1,0 +1,16 @@
+Single thread:
+It took on average 14 seconds 
+Call back mechanism:
+14 seconds.
+
+ThreadPoolexecutor
+13.21
+
+ThreadPoolexecutor, producer config linger.ms, batch.size
+6.10 seconds
+
+ThreadPoolexecutor, linger.ms
+13.31
+
+ThreadPoolexecutor, batch.size
+13.74 seconds
