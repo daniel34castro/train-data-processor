@@ -2,20 +2,14 @@
 import logging
 import time
 import os
-import uuid
 import socket
 from data_processor import DataProcessor
-from row_processor import RowProcessor
-from record_processor import RecordProcessor
-from data_fetcher import DataFetcher
-from kafka_producer_client import KafkaProducerClient
 
-
-CONF = {'bootstrap.servers': 'pkc-7xoy1.eu-central-1.aws.confluent.cloud:9092',
+CONF = {'bootstrap.servers': os.getenv('KAFKA_BOOTSTRAP_SERVERS', 'localhost:9092'),
         'security.protocol': 'SASL_SSL',
         'sasl.mechanism': 'PLAIN',
-        'sasl.username': '5QQUUN7SPZLDSXQO',
-        'sasl.password': 'hj4Cq0CEWY69HHuxwJA4oeB522B6wpdm6O5hizlXk7Ys/2EQDQ7ac0MdOcfrmTlx',
+        'sasl.username': os.getenv('KAFKA_SASL_USERNAME', 'default-username'),
+        'sasl.password': os.getenv('KAFKA_SASL_PASSWORD', 'default-password'),
         'linger.ms': 3000,               # Adds small delay to batch messages
         # 'batch.size': 32768,          # Batches messages up to 32 KB
         'compression.type': 'snappy', # Compress messages using snappy
