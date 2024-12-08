@@ -35,7 +35,7 @@ The final goal for this challenge was creating a quality report. The architectur
 ![image](https://github.com/user-attachments/assets/8e2fb1c4-5a28-4282-86b2-21a47ec5e212)
 
 
-Potencial improvements
+## Potencial improvements
 - Retry mechanism in case of failures in Kafka sending (e.g., network issues) 
 - Parallel Processing with threadpools or use libraries like Apache Flink or Kafka Streams, which are designed for high-throughput, low-latency processing of large datasets.
 - Externalize configuration into a separate config file or enviroment variables

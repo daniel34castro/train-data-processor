@@ -27,7 +27,11 @@ class DataProcessor:
 
         print(f"Fetched {len(data)} records. Processing with {self.max_threads} threads...")
 
-        self._multi_thread_processing(data)
+        # self._multi_thread_processing(data)
+        for record in data:
+            self._process_record(record) 
+        
+        self.kafka_client.flush()
 
         print("Finished processing all records.")
 
@@ -74,3 +78,6 @@ class DataProcessor:
         error_record['exception'] = exception.args[0]
         error_record['exception-detailed'] = exception.args[1] if len(exception.args) > 1 else None
         self.kafka_client.send_message(record_uuid, error_record, self.error_topic)
+        
+        
+        

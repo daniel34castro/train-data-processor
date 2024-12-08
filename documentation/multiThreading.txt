@@ -6,7 +6,7 @@ Call back mechanism:
 ThreadPoolexecutor
 13.21
 
-ThreadPoolexecutor, producer config linger.ms, batch.size
+ThreadPoolexecutor, producer config linger.ms, batch.size, compression.type
 6.10 seconds
 
 ThreadPoolexecutor, linger.ms
@@ -14,3 +14,42 @@ ThreadPoolexecutor, linger.ms
 
 ThreadPoolexecutor, batch.size
 13.74 seconds
+
+ThreadPoolexecutor, 'compression.type': 'snappy'
+6 seconds
+
+1. no manual flushing- Explicit Flush Before Exit
+
+ThreadPoolexecutor, producer config linger.ms, batch.size, compression.type
+2.47 seconds
+
+ThreadPoolexecutor, producer config compression.type
+2.40 seconds
+
+Single-thread, producer config linger.ms, batch.size, compression.type
+2.44 seconds
+
+Single-thread, producer config compression.type snappy
+2.40 seconds
+
+Single-thread, producer config compression.type gzip
+2.03 seconds
+
+
+ThreadPoolexecutor, no configs
+10.13 seconds.
+
+Single-thread, no configs
+10.54 seconds.
+
+
+
+Strategy                     | Pros                                       | Cons                                   | Use Case                       
+-----------------------------|--------------------------------------------|----------------------------------------|--------------------------------
+Flush on Each Send           | Guarantees delivery immediately.           | High latency, poor performance.        | Low message throughput.        
+Buffered Flushing (Threshold)| Balances latency and performance.          | Buffered messages may delay delivery.  | Moderate throughput.           
+Periodic Flushing (Timeout)  | Decouples flush from message sending.      | Slightly complex implementation.       | Long-running, continuous jobs. 
+Explicit Flush Before Exit   | Simple and sufficient for batch workloads. | Relies on explicit program exit flush. | Short-lived batch processing.  
+
+
+Flush on Each Send - impossible 
