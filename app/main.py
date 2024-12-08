@@ -10,7 +10,7 @@ CONF = {'bootstrap.servers': os.getenv('KAFKA_BOOTSTRAP_SERVERS', 'localhost:909
         'sasl.mechanism': 'PLAIN',
         'sasl.username': os.getenv('KAFKA_SASL_USERNAME', 'default-username'),
         'sasl.password': os.getenv('KAFKA_SASL_PASSWORD', 'default-password'),
-        'linger.ms': 3000,               # Adds small delay to batch messages
+        # 'linger.ms': 5,               # Adds small delay to batch messages
         # 'batch.size': 32768,          # Batches messages up to 32 KB
         'compression.type': 'snappy', # Compress messages using snappy
         # 'acks': '1',                  # Acknowledgment level for performance

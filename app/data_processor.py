@@ -25,7 +25,7 @@ class DataProcessor:
         if not data:
             raise Exception("No data fetched from the source.")
 
-        print(f"Fetched {len(data)} records. Processing with {self.max_threads} threads...")
+        print(f"Fetched {len(data)} records.")
 
         # self._multi_thread_processing(data)
         for record in data:
