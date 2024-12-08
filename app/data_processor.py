@@ -21,7 +21,7 @@ class DataProcessor:
     def process_data(self):
         """Fetch data and process it using multithreading."""
         print("Fetching data...")
-        data = self.fetcher.fetch_data_local()
+        data = self.fetcher.fetch_data()
         if not data:
             raise Exception("No data fetched from the source.")
 

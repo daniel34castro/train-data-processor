@@ -52,4 +52,4 @@ Periodic Flushing (Timeout)  | Decouples flush from message sending.      | Slig
 Explicit Flush Before Exit   | Simple and sufficient for batch workloads. | Relies on explicit program exit flush. | Short-lived batch processing.  
 
 
-Flush on Each Send - impossible 
+Flush on Each Send - too much time. Does not even make sense.
