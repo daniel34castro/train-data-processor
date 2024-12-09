@@ -32,7 +32,8 @@ KAFKA_SASL_PASSWORD: Kafka SASL password for authentication.
 
 ## Report
 The final goal for this challenge was creating a quality report. The architecture of the solution consists on 2 platforms, Confluent Cloud and Elastic Cloud. Confluent cloud hosts the kafka brokers and a connector that sinks data from all the topics to elastic indexes. The report was built in Kibana and it's automatically updated with the elastic indexes.
-![image](https://github.com/user-attachments/assets/8e2fb1c4-5a28-4282-86b2-21a47ec5e212)
+![image](https://github.com/user-attachments/assets/ad555c5e-8d6f-498a-be82-c7b5d565449a)
+
 
 
 ## Potencial improvements
