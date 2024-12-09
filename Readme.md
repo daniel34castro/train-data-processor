@@ -39,6 +39,7 @@ The final goal for this challenge was creating a quality report. The architectur
 - Retry mechanism in case of failures in Kafka sending (e.g., network issues) 
 - Parallel Processing with threadpools or use libraries like Apache Flink or Kafka Streams, which are designed for high-throughput, low-latency processing of large datasets.
 - Externalize configuration into a separate config file or enviroment variables
+- Use pydantic for data validation
 
 
 Notes: 
